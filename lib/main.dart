@@ -31,10 +31,10 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
 
   final List<Widget> _widgetOptions = [
-      HomePage(),
+      const HomePage(),
 
     const StaffPage(),
-        ChoosePage(),
+    const MyHomePage(),
 
     const Text('Create Account'),
   ];

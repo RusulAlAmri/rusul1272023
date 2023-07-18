@@ -13,9 +13,7 @@ final List<String> imageList = [
 ];
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  get top => null;
+  HomePage({super.key});
 
 
   void _launchURL() async {
@@ -46,12 +44,9 @@ class HomePage extends StatelessWidget {
       ),
 
       body: SingleChildScrollView(
-        child: Container(
-    height: 2000,
         child: Stack(
           children:[
-            Container (
-            child: Positioned(
+            Positioned(
               right:  15,
               top: 10,
               child: Container(
@@ -71,12 +66,11 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            ),
-            Container(
-            child: Positioned(
+            Positioned(
               right: 75, // Use _left to position the second image as well
               top: 10 ,
-              child: SizedBox(
+
+              child: Container(
                 width: 50,
                 height: 50,
                 // Add an offset to position the second image
@@ -92,11 +86,10 @@ class HomePage extends StatelessWidget {
 
               ),
             ),
-            ),
-            Container (
-            child: Positioned(
+            Positioned(
+
               child: Container(
-                height: 500,
+                height: 600,
                 child: Padding(
                   padding: const EdgeInsets.all(100.0),
                   child: CarouselSlider(
@@ -131,94 +124,25 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            ),
-            Container(
-              child: Positioned(
-                left:20,
-                top: 500,
-                child:Container(
-                  height: 400,
-                  width: 400,
+            Positioned(
+                top: 500 ,
+                left:   100 ,
 
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'Welcome to My Website!',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 16),
-                      Image.asset(
-                        'assets/logocollege.JPG', // Replace with your image path
-                        height: 200,
-                        width: 200,
-                        fit: BoxFit.cover,
-                      ),
-                      const SizedBox(height: 16),
-                      Text(
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-                            'Vestibulum euismod dolor nec arcu semper, at tincidunt mauris tincidunt. '
-                            'Praesent faucibus enim a sem blandit, id tristique tortor varius. '
-                            'Donec sed tincidunt velit, ac consequat nisl. '
-                            'Nullam rhoncus lobortis nulla eu tincidunt.',
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                ) ,
-              ),
-            ),
-            Container(
-              child: Positioned(
-                left: 20,
-                top: 900,
-                child:Container(
-                  height: 400,
-                  width: 400,
+                child: Container(
+                  height: 200,
+                  width: 200,
+                  color : Colors.green,
 
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'Welcome to My Website!',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 16),
-                      Image.asset(
-                        'assets/logocollege.JPG', // Replace with your image path
-                        height: 200,
-                        width: 200,
-                        fit: BoxFit.cover,
-                      ),
-                      const SizedBox(height: 16),
-                      Text(
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-                            'Vestibulum euismod dolor nec arcu semper, at tincidunt mauris tincidunt. '
-                            'Praesent faucibus enim a sem blandit, id tristique tortor varius. '
-                            'Donec sed tincidunt velit, ac consequat nisl. '
-                            'Nullam rhoncus lobortis nulla eu tincidunt.',
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                ) ,
-              ),
-            ),
-    ],
-    ),
 
+                ))
+          ],
         ),
       ),
-      );
-
+    );
 
   }
+
+
   void setState(Null Function() param0) {
   }
 

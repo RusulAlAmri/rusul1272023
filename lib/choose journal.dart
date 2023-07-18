@@ -1,54 +1,54 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class ChoosePage extends StatelessWidget {
+import 'HomePage.dart';
 
-  final List<String> imageList = [
-    'assets/slider 1.jpg',
-    'assets/slider2.jpeg',
-    'assets/slider 3.jpg',
-  ];
+class MyPage extends StatelessWidget {
+  const MyPage({super.key});
 
-    ChoosePage({super.key});
+  void _launchURL() async {
+    const url = 'https://alameed.edu.iq/'; // Replace with your desired URL
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
+  void _launchURL2() async {
+    const url = 'https://alameed.edu.iq/College-of-Nursing'; // Replace with your desired URL
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Page'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(100.0),
-        child: CarouselSlider(
-          options: CarouselOptions(
-            height: 500.0,
-            autoPlay: .true,
-            enlargeCenterPage: true,
-            aspectRatio: 16/9,
-            autoPlayCurve: Curves.fastOutSlowIn,
-            enableInfiniteScroll: true,
-            autoPlayAnimationDuration: const Duration(milliseconds: 800),
-            viewportFraction: 0.8,
+    return MaterialApp(
+      home: Scaffold(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+
+              Positioned(
+                top: 100,
+                right: 100,
+                bottom: 0,
+                left: 200,
+                child: Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.blue,
+                ),
+              ),
+            ],
           ),
-          items: imageList.map((imageURL) {
-            return Builder(
-              builder: (BuildContext context) {
-                return Container(
-                  width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                  decoration: const BoxDecoration(
-                    color: Colors.green,
-                  ),
-                  child: Image.network(
-                    imageURL,
-                    fit: BoxFit.cover,
-                  ),
-                );
-              },
-            );
-          }).toList(),
         ),
       ),
     );
   }
+
+  void setState(Null Function() param0) {}
 }
