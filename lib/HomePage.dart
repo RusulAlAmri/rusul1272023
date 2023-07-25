@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-import 'choose journal.dart';
+
 
 // ignore: must_be_immutable
 
@@ -132,91 +132,103 @@ class HomePage extends StatelessWidget {
               ),
             ),
             ),
-            Container(
-              child: Positioned(
-                left:20,
-                top: 500,
-                child:Container(
-                  height: 400,
-                  width: 400,
 
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'Welcome to My Website!',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
+             Container(
+               child: Positioned(
+                 left:20,
+                 top: 500,
+                 child:Container(
+                   height: 400,
+                   width: 400,
+              padding: EdgeInsets.all(16.0),
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  if (constraints.maxWidth < 600) {
+                    // Mobile layout
+                    return  Column(
+
+                      children: [
+                        Container(
+                          height: 200,
+                          width: double.infinity,
+                          color: Colors.blue,
+                          child: Center(
+                            child: Text(
+                              'Container 1',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 16),
-                      Image.asset(
-                        'assets/logocollege.JPG', // Replace with your image path
-                        height: 200,
-                        width: 200,
-                        fit: BoxFit.cover,
-                      ),
-                      const SizedBox(height: 16),
-                      Text(
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-                            'Vestibulum euismod dolor nec arcu semper, at tincidunt mauris tincidunt. '
-                            'Praesent faucibus enim a sem blandit, id tristique tortor varius. '
-                            'Donec sed tincidunt velit, ac consequat nisl. '
-                            'Nullam rhoncus lobortis nulla eu tincidunt.',
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                ) ,
+                        SizedBox(height: 16.0),
+                        Container(
+                          height: 200,
+                          width: double.infinity,
+                          color: Colors.red,
+                          child: Center(
+                            child: Text(
+                              'Container 2',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  } else {
+                    // Website layout
+                    return   Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 400,
+                            color: Colors.blue,
+                            child: Center(
+                              child: Text(
+                                'Container 1',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 16.0),
+                        Expanded(
+                          child: Container(
+                            height: 400,
+                            color: Colors.red,
+                            child: Center(
+                              child: Text(
+                                'Container 2',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+
+                      ],
+                    );
+                  }
+                },
               ),
             ),
-            Container(
-              child: Positioned(
-                left: 20,
-                top: 900,
-                child:Container(
-                  height: 400,
-                  width: 400,
-
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'Welcome to My Website!',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 16),
-                      Image.asset(
-                        'assets/logocollege.JPG', // Replace with your image path
-                        height: 200,
-                        width: 200,
-                        fit: BoxFit.cover,
-                      ),
-                      const SizedBox(height: 16),
-                      Text(
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-                            'Vestibulum euismod dolor nec arcu semper, at tincidunt mauris tincidunt. '
-                            'Praesent faucibus enim a sem blandit, id tristique tortor varius. '
-                            'Donec sed tincidunt velit, ac consequat nisl. '
-                            'Nullam rhoncus lobortis nulla eu tincidunt.',
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                ) ,
-              ),
-            ),
-    ],
-    ),
-
+               ),
+             ),
+  ],
+        ),
         ),
       ),
-      );
-
+    );
 
   }
   void setState(Null Function() param0) {

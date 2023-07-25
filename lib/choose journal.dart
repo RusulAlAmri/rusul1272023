@@ -1,54 +1,98 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-import 'HomePage.dart';
 
-class MyPage extends StatelessWidget {
-  const MyPage({super.key});
 
-  void _launchURL() async {
-    const url = 'https://alameed.edu.iq/'; // Replace with your desired URL
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
-  void _launchURL2() async {
-    const url = 'https://alameed.edu.iq/College-of-Nursing'; // Replace with your desired URL
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-
-              Positioned(
-                top: 100,
-                right: 100,
-                bottom: 0,
-                left: 200,
-                child: Container(
-                  width: 100,
-                  height: 100,
-                  color: Colors.blue,
-                ),
-              ),
-            ],
+        appBar: AppBar(
+          title: Text('Multi-Container Example'),
+        ),
+        body: Container(
+          padding: EdgeInsets.all(16.0),
+          child: Center(
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                if (constraints.maxWidth < 600) {
+                  // Mobile layout
+                  return Column(
+                    children: [
+                      Container(
+                        height: 200,
+                        width: double.infinity,
+                        color: Colors.blue,
+                        child: Center(
+                          child: Text(
+                            'Container 1',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 16.0),
+                      Container(
+                        height: 200,
+                        width: double.infinity,
+                        color: Colors.red,
+                        child: Center(
+                          child: Text(
+                            'Container 2',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                } else {
+                  // Desktop layout
+                  return Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          height: 400,
+                          color: Colors.blue,
+                          child: Center(
+                            child: Text(
+                              'Container 1',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 16.0),
+                      Expanded(
+                        child: Container(
+                          height: 400,
+                          color: Colors.red,
+                          child: Center(
+                            child: Text(
+                              'Container 2',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                }
+              },
+            ),
           ),
         ),
       ),
     );
   }
-
-  void setState(Null Function() param0) {}
 }

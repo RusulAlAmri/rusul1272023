@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
       const HomePage(),
 
     const StaffPage(),
-    const MyHomePage(),
+    const MyApp(),
 
     const Text('Create Account'),
   ];
